@@ -57,7 +57,7 @@ for (int df = -1; df <=1; df+=2){
           int base = (color == white) ? wN :bN ;
         for (int promo = base; promo <= base+3 ; promo ++)
         {
-            moves.push_back({sq, to_sq, promo, empty, 3});
+            moves.push_back({sq, cap_sq, target, promo, 3});
         }
   
         }
@@ -138,7 +138,7 @@ for ( int dr =-1; dr <=1; dr++){
     for (int df= -1; df<=1; df++){
         if (dr==0 && df== 0)continue;
         int r = rank +dr,  f = file + df;
-        if (r < 0 || r > 7 || f < 0 || f < 7)continue;
+        if (r < 0 || r > 7 || f < 0 || f > 7)continue;
         int to_sq= sq_of(r,f);
         int target = b.squares[to_sq];
         if (target==empty || piece_color(target)!= color){

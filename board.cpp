@@ -133,7 +133,7 @@ int enemy_rook= (by_color==white) ? wR:bR;
 int diag_dirs[4][2] = {{1,1},{1,-1},{-1,1},{-1,-1}};
 for (auto& dir : diag_dirs){
     int r = rank + dir[0], f = file + dir[1];
-    while (r >= 0 && r <= 8 && f>=0 && f<8){
+    while (r >= 0 && r < 8 && f>=0 && f<8){
         int p = b.squares[sq_of(r,f)];
         if (p!= empty){
             if (p == enemy_bishop || p == enemy_queen) return true;
@@ -150,10 +150,10 @@ for (auto& dir : diag_dirs){
 int straight_dirs[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
 for (auto& dir : straight_dirs){
     int r = rank + dir[0], f = file + dir[1];
-        while (r >= 0 && r <= 8 && f>=0 && f<8){
+        while (r >= 0 && r < 8 && f>=0 && f<8){
             int p = b.squares[sq_of(r,f)];
             if (p!= empty ){
-                if (p == enemy_rook || p == enemy_rook) return true;
+                if (p == enemy_rook || p == enemy_queen )return true;
                 break;
             }
             r+= dir[0], f+= dir[1];
